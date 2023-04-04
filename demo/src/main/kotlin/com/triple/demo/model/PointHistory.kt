@@ -1,7 +1,7 @@
-package com.triple.demo.entity
+package com.triple.demo.model
 
+import com.triple.demo.common.entity.BaseTimeEntity
 import com.triple.demo.common.enums.ActionType
-import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
@@ -10,15 +10,11 @@ data class PointHistory(
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     val id: Long,
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    val user: User,
-    @ManyToOne
-    @JoinColumn(name = "review_id")
-    val review: Review? = null,
+    @JoinColumn(name = "event_id")
+    val event: Event? = null,
     @Enumerated(EnumType.STRING)
     val action: ActionType? = ActionType.ADD,
-    val createdAt: LocalDateTime? = LocalDateTime.now(),
     val point: Long,
     @ElementCollection
     val reason: List<String>? = listOf()
-)
+): BaseTimeEntity()

@@ -1,8 +1,10 @@
-package com.triple.demo.entity
+package com.triple.demo.model
 
+import com.triple.demo.common.entity.BaseEntity
 import com.triple.demo.common.enums.ActionType
 import com.triple.demo.common.enums.EventType
 import org.hibernate.annotations.GenericGenerator
+import org.hibernate.envers.Audited
 import javax.persistence.ElementCollection
 import javax.persistence.Entity
 import javax.persistence.EnumType
@@ -14,12 +16,12 @@ import javax.persistence.ManyToOne
 import javax.persistence.OneToOne
 
 @Entity
-data class Review(
+@Audited
+data class Event(
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name="uuid2", strategy = "uuid2")
+    override val id: String? = null,
     val reviewId: String? = null,
-    val content: String? = null,
+    var content: String? = null,
     @ElementCollection
     val attachedPhotoIds: List<String>? = listOf(),
     @ManyToOne
@@ -29,7 +31,9 @@ data class Review(
     @JoinColumn(name = "place_id")
     val place: Place? = null,
     @Enumerated(EnumType.STRING)
-    val type: EventType? = EventType.REVIEW,
+    val type: EventType? = null,
     @Enumerated(EnumType.STRING)
-    val action: ActionType? = null
-    )
+    var action: ActionType? = null,
+    // 획득 포인트
+    var point: Long? = 0L
+): BaseEntity()

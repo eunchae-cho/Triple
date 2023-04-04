@@ -1,6 +1,6 @@
 package com.triple.demo.service
 
-import com.triple.demo.entity.Place
+import com.triple.demo.model.Place
 import com.triple.demo.repository.PlaceRepository
 import org.springframework.stereotype.Service
 
@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service
 class PlaceService(
     private val placeRepository: PlaceRepository
 ) {
-    fun getAll(): List<Place> {
+    fun findAll(): List<Place> {
         return placeRepository.findAll()
     }
 
-    fun getOne(id: String): Place {
+    fun findById(id: String): Place {
         return placeRepository.findById(id).get()
     }
 
-    fun add(place: Place) {
+    fun save(place: Place) {
         placeRepository.save(place)
     }
 
