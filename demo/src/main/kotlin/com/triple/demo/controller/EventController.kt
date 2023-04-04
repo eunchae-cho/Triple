@@ -15,13 +15,19 @@ class EventController(
     @PostMapping("/events")
     fun add(@RequestBody reviewEntity: ReviewEntity): ResponseEntity<Unit> {
         return when(reviewEntity.action) {
+
             ActionType.ADD ->
                 if (eventService.hasReview(reviewEntity)) {
                     ResponseEntity.badRequest().build()
                 } else {
-                    ResponseEntity.ok(eventService.addReview(reviewEntity))
+                     ResponseEntity.ok(eventService.addReview(reviewEntity))
                 }
-            else -> ResponseEntity.badRequest().build()
+
+            ActionType.MOD -> ResponseEntity.ok(eventService.modifyReview(reviewEntity))
+
+            ActionType.DELETE -> ResponseEntity.ok(eventService.deleteReview(reviewEntity))
+
+//            else -> ResponseEntity.badRequest().build()
         }
     }
 }

@@ -20,12 +20,10 @@ class EventService(
 
     fun addReview(reviewEntity: ReviewEntity) {
 
-        // 포인트 저장
         val point = calculatePoint(reviewEntity)
+
+        // 포인트 저장
         userService.updatePoint(reviewEntity.userId, point)
-
-        // 포인트 히스토리 저장
-
 
         // 이벤트 저장
         eventRepository.save(
@@ -36,9 +34,24 @@ class EventService(
                 user = User(id = reviewEntity.userId),
                 place = Place(id = reviewEntity.placeId),
                 type = reviewEntity.type,
-                action = reviewEntity.action
+                action = reviewEntity.action,
+                point = point
             )
         )
+    }
+
+    fun modifyReview(reviewEntity: ReviewEntity) {
+        var event = eventRepository.findByReviewId(reviewEntity.reviewId)
+        event.action = reviewEntity.action
+        event.content = reviewEntity.content
+        event.attachedPhotoIds = reviewEntity.attachedPhotoIds
+
+        // 이벤트 업데이트
+        eventRepository.save(event)
+    }
+
+    fun deleteReview(reviewEntity: ReviewEntity) {
+        eventRepository.deleteByReviewId(reviewEntity.reviewId)
     }
 
     // 리뷰 보상 점수 계산

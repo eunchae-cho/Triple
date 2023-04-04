@@ -1,29 +1,24 @@
 package com.triple.demo.model
 
-import com.triple.demo.common.entity.BaseEntity
+import com.triple.demo.common.entity.AuditingEntity
 import com.triple.demo.common.enums.ActionType
 import com.triple.demo.common.enums.EventType
 import org.hibernate.annotations.GenericGenerator
 import org.hibernate.envers.Audited
-import javax.persistence.ElementCollection
-import javax.persistence.Entity
-import javax.persistence.EnumType
-import javax.persistence.Enumerated
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToOne
-import javax.persistence.OneToOne
+import org.hibernate.envers.RelationTargetAuditMode
+import javax.persistence.*
 
 @Entity
-@Audited
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 data class Event(
     @Id
-    override val id: String? = null,
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    val id: String? = null,
     val reviewId: String? = null,
     var content: String? = null,
     @ElementCollection
-    val attachedPhotoIds: List<String>? = listOf(),
+    var attachedPhotoIds: List<String>? = listOf(),
     @ManyToOne
     @JoinColumn(name = "user_id")
     val user: User? = null,
@@ -36,4 +31,4 @@ data class Event(
     var action: ActionType? = null,
     // 획득 포인트
     var point: Long? = 0L
-): BaseEntity()
+): AuditingEntity()
