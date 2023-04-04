@@ -25,6 +25,10 @@ class UserService(
         userRepository.deleteById(id)
     }
 
+    fun findPointById(id: String): Long {
+        return userRepository.findById(id).get().totalPoint!!
+    }
+
     fun updatePoint(userId: String, point: Long) {
         var user: User = userRepository.findById(userId).get()
         user.totalPoint = user.totalPoint?.plus(point)

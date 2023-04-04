@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.RestController
 class EventController(
     private val eventService: EventService
 ) {
+
+    /**
+     * method : POST
+     * uri : /events
+     * description : 이벤트 저장/수정/삭제
+     * @Param : 리뷰 객체 (ReviewEntity)
+     * */
     @PostMapping("/events")
     fun add(@RequestBody reviewEntity: ReviewEntity): ResponseEntity<Unit> {
         return when(reviewEntity.action) {
