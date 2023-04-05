@@ -29,6 +29,6 @@ data class Event(
     val type: EventType? = null,
     @Enumerated(EnumType.STRING)
     var action: ActionType? = null,
-    // 획득 포인트
-    var point: Long? = 0L
+    @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    var points: List<Point>? = mutableListOf()
 ): AuditingEntity()
