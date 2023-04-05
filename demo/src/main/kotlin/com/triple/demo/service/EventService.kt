@@ -22,9 +22,6 @@ class EventService(
     }
 
     fun addReview(reviewEntity: ReviewEntity) {
-        // 획득 포인트 리스트
-//        val pointList = makePointList(reviewEntity)
-
         // 이벤트 저장
         eventRepository.save(
             Event(
@@ -108,8 +105,7 @@ class EventService(
     }
 
     private fun makePointList(reviewEntity: ReviewEntity, pointList: List<Point>): List<Point> {
-        var list  = mutableListOf<Point>()
-        list = pointList.filter { i -> i.scoreType == PointType.BONUS_FIRST_REVIEW.getKey() }.toMutableList()
+        var list = pointList.filter { i -> i.scoreType == PointType.BONUS_FIRST_REVIEW.getKey() }.toMutableList()
 
         // 1자 이상 텍스트 작성: 1점
         if (reviewEntity.content.isNotEmpty()) {
