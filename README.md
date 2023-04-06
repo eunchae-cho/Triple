@@ -12,6 +12,7 @@
 name | version
 -----|---------
 Kotlin | 1.6.21
+JPA | 1.6.21
 Spring Boot | 2.7.11
 Gradle | 8.0.2
 MySQL | 5.7.40
@@ -80,8 +81,8 @@ Table | Table Description | Column | Column Description
 ||| next_val | 다음 시퀀스 값 정보
 
 ###2-6. ERD 
-![my_db](https://user-images.githubusercontent.com/68311262/230319628-b8e27fc5-1af1-4162-bc60-5956424d8327.png)  
-  
+![my_db](https://user-images.githubusercontent.com/68311262/230333947-0daa7c94-79ff-469e-abea-dbb25c0943e3.png)
+
   
 ## 3. 애플리케이션 실행
 
