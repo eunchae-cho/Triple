@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface EventRepository: JpaRepository<Event, String> {
-    fun countByUserIdAndPlaceId(placeId: String, userId: String): Int
+    fun countByUserIdAndPlaceId(userId: String, placeId: String): Long
     fun countByPlaceId(placeId: String): Int
     fun findByReviewId(reviewId: String): Event
     fun deleteByReviewId(reviewId: String)

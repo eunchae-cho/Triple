@@ -18,7 +18,7 @@ class EventService(
 
     // 한 사용자는 장소마다 리뷰를 1개만 작성
     fun hasReview(reviewEntity: ReviewEntity): Boolean {
-        return eventRepository.countByUserIdAndPlaceId(reviewEntity.placeId, reviewEntity.userId) > 0
+        return eventRepository.countByUserIdAndPlaceId(reviewEntity.userId, reviewEntity.placeId) > 0
     }
 
     fun addReview(reviewEntity: ReviewEntity) {
