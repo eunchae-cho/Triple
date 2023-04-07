@@ -11,7 +11,7 @@ interface EventRepository: JpaRepository<Event, String> {
     fun countByPlaceId(placeId: String): Int
     fun findByReviewId(reviewId: String): Event
     fun deleteByReviewId(reviewId: String)
-    @Query("select sum(p.score) from point p, event e, event_points ep " +
+    @Query("select ifnull(sum(p.score), 0) from point p, event e, event_points ep " +
             "where e.id = ep.event_id and p.id = ep.points_id and e.user_id = ?1", nativeQuery = true)
     fun sumPointByUserId(userId: String): Long
 }

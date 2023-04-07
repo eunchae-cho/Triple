@@ -99,8 +99,7 @@ create table my_db.user
         primary key,
     login_name  varchar(255) null,
     name        varchar(255) null,
-    password    varchar(255) null,
-    total_point bigint       null
+    password    varchar(255) null
 ) default character set UTF8;
 
 create table my_db.event

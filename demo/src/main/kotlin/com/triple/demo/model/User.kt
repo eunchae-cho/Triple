@@ -13,6 +13,5 @@ data class User(
     val id: String? = null,
     var name: String? = null,
     var loginName: String? = null,
-    var password: String? = null,
-    var totalPoint: Long? = 0L
+    var password: String? = null
 )
