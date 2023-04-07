@@ -120,19 +120,20 @@ Table | Table Description | Column | Column Description
   
 ## 3. 애플리케이션 실행
 
-### 3-1. 서버 실행 전 필요한 셋팅 💡
-##### DB 스키마 설정 필요 (스키마명 : my_db)
-```
-create schema my_db;  
-```
+### 3-1. 서버 실행 방법
+
+##### 1. DB 스키마 설정 필요 (스키마명 : my_db | 명령어 : create schema my_db;)
+##### 2. Intellij 혹은 서버를 실행할 수 있는 에디터로 프로젝트를 열어준다.
+##### 3. 프로젝트 설정에 맞게 에디터 환경을 셋팅한다. (SDK : java 11, Gradle VM : java 11)
+##### 4. 'Triple > demo' 아래에서 'gradle clean build -x test' 명령어를 실행한다. (에디터의 gradle 도구를 이용해도 좋음 : build > clean, build > build)
+##### 5. DemoApplication에서 main()을 실행한다. (에디터의 gradle 도구를 이용해도 좋음 : application > bootRun)
+
 ### 3-2. 기타 전달 사항 
-> - 서버 기동 시 JPA로 테이블을 생성하는 것이 아닌, schema.sql과 data.sql를 사용하여 기본 테이블과 기본 정보를 생성합니다.  
-> - 기본 정보는 사용자 1명(id: 샘플에 있는 UUID)과 장소 1개(id: 샘플에 있는 UUID)가 있습니다.
-> - 서버 기동할 때마다 테이블과 데이터는 초기화됩니다.
-> - DemoApplicationTests에 간단한 통합테스트 하나를 만들어 놓았습니다.
-> - 이벤트 히스토리는 hibernate eveners를 사용하여 테이블명 '*_aud'의 형태로 저장되어 이벤트 발생 시마다 관리됩니다.
-
-
-### 3-2. 서버 실행 방법
+- 서버 기동 시 JPA로 테이블을 생성하는 것이 아닌, schema.sql과 data.sql를 사용하여 기본 테이블과 기본 정보를 생성합니다.  
+- 기본 정보는 사용자 1명(id: 샘플에 있는 UUID)과 장소 1개(id: 샘플에 있는 UUID)가 있습니다.
+- 서버 기동할 때마다 테이블과 데이터는 초기화됩니다.
+- DemoApplicationTests에 간단한 통합테스트 하나를 만들어 놓았습니다.
+- 이벤트 히스토리는 hibernate eveners를 사용하여 테이블명 '*_aud'의 형태로 저장되어 이벤트 발생 시마다 관리됩니다.
+- Spring, JPA 설정은 application.yml을 통해 설정했습니다.
 
 ### Swagger UI
