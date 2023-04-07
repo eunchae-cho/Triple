@@ -132,9 +132,9 @@ Table | Table Description | Column | Column Description
 - 서버 기동 시 JPA로 테이블을 생성하는 것이 아닌, schema.sql과 data.sql를 사용하여 기본 테이블과 기본 정보를 생성합니다.  
 - 기본 정보는 사용자 1명(id: 샘플에 있는 UUID)과 장소 1개(id: 샘플에 있는 UUID)가 있습니다.
 - 서버 기동할 때마다 테이블과 데이터는 초기화됩니다.
-- DemoApplicationTests에 간단한 통합테스트 하나를 만들어 놓았습니다.
-- 이벤트 히스토리는 hibernate eveners를 사용하여 테이블명 '*_aud'의 형태로 저장되어 이벤트 발생 시마다 관리됩니다.
 - Spring, JPA 설정은 application.yml을 통해 설정했습니다. (서버 port : 8080)
+- 이벤트 히스토리는 hibernate eveners를 사용하여 테이블명 '*_aud'의 형태로 저장되어 이벤트 발생 시마다 관리됩니다.
+- DemoApplicationTests에 간단한 통합테스트 하나를 만들어 놓았습니다.
 
 ### 3-3. Swagger UI
 > 서버 기동 후 접속 url 입니다!
