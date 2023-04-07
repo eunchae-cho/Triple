@@ -1,12 +1,12 @@
 # 인터파크 Triple 기술 과제  
 
 
-## 📃 1. 설명
+## 1. 설명 📃
 ```
 트리플여행자 클럽 마일리지 서비스 API 구현하기
 ```
   
-## 💻 2. 프로젝트 명세
+## 2. 프로젝트 명세 💻
   
 ### 2-1. 기술 스택
 name | version
@@ -23,7 +23,41 @@ Swagger | 3.0.0
 - Window
 - Intellij, DataGrip, Postman  
 
-### 2-3. 프로젝트 구조
+### 2-3. 프로젝트 구조  
+```
+com.triple.demo
+----------------
+   ㄴ common
+            ㄴ entitiy
+                    ㄴ AuditingEntity
+            ㄴ enums
+                    ㄴ EnumModel
+                    ㄴ ActionType
+                    ㄴ EventType
+                    ㄴ PointType
+   ㄴ config
+            ㄴ SwaggerConfig
+   ㄴ controller
+            ㄴ EventController
+   ㄴ entity
+            ㄴ ReviewEntity
+   ㄴ model
+            ㄴ Point
+            ㄴ Event
+            ㄴ Place
+            ㄴ User
+   ㄴ repository
+            ㄴ PointRepository
+            ㄴ PlaceRepository
+            ㄴ EventRepository
+            ㄴ UserRepository
+   ㄴ service
+            ㄴ PointService
+            ㄴ PlaceService
+            ㄴ EventService
+            ㄴ UserService
+   ㄴ DemoApplication
+```
 
 ### 2-4. REST API 명세서
 > 자세한 내용은 서버 기동 후 **swagger-ui**를 통해 알 수 있습니다!  
@@ -86,7 +120,18 @@ Table | Table Description | Column | Column Description
   
 ## 3. 애플리케이션 실행
 
-### 💡 3-1. 서버 실행 전 필요한 셋팅
+### 3-1. 서버 실행 전 필요한 셋팅 💡
+##### DB 스키마 설정 필요 (스키마명 : my_db)
+```
+create schema my_db;  
+```
+### 3-2. 기타 전달 사항 
+> - 서버 기동 시 JPA로 테이블을 생성하는 것이 아닌, schema.sql과 data.sql를 사용하여 기본 테이블과 기본 정보를 생성합니다.  
+> - 기본 정보는 사용자 1명(id: 샘플에 있는 UUID)과 장소 1개(id: 샘플에 있는 UUID)가 있습니다.
+> - 서버 기동할 때마다 테이블과 데이터는 초기화됩니다.
+> - DemoApplicationTests에 간단한 통합테스트 하나를 만들어 놓았습니다.
+> - 이벤트 히스토리는 hibernate eveners를 사용하여 테이블명 '*_aud'의 형태로 저장되어 이벤트 발생 시마다 관리됩니다.
+
 
 ### 3-2. 서버 실행 방법
 
