@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiResponse
 import io.swagger.annotations.ApiResponses
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-@Api(tags = ["트리플여행자 클럽 마일리지 서비스 API"])
 @RestController
 @RequestMapping("/events")
 class EventController(
